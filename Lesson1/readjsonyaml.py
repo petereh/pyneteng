@@ -2,15 +2,28 @@
 
 import yaml
 import json
-import pprint
+from pprint import pprint
 
 
-with open ('myyaml.yaml') as f :
-  list2 = yaml.load(f)
+def output_format(my_list, my_str):
+    '''
+    Make the output format easier to read
+    '''
+    print '\n\n'
+    print '#' * 3
+    print '#' * 3 + my_str
+    print '#' * 3
+    pprint(my_list)
 
-pprint.pprint (list2)
+def main() :
+    with open ('myyaml.yaml') as f :
+        list2 = yaml.load(f)
 
-with open ("myjson.json") as f :
-  list3 = json.load(f)
+    with open ("myjson.json") as f :
+        list3 = json.load(f)
+        
+        output_format(list2, 'YAML')
+        output_format(list3, 'JSON')
 
-pprint.pprint(list3)
+if __name__ == "__main__" :
+    main()
